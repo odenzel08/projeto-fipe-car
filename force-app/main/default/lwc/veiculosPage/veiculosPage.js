@@ -1,3 +1,5 @@
-import { LightningElement } from 'lwc';
+import { LightningModal } from 'lightning/modal';
 
-export default class VeiculosPage extends LightningElement {}
+export default class VeiculosPage extends LightningModal {
+
+}

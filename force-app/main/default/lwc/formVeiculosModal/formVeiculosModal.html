@@ -1,61 +1,63 @@
 <template>
-    <!-- Modal para cadastro de veículos
-            Titulo  -->
+<!-- Modal para cadastro de veículos
+        Titulo  -->
     <lightning-modal-header label="Cadastrar novo veículo"></lightning-modal-header>
     <!-- Conteúdo -->
-     <lightning-modal-body class="slds-p-around_medium">
+    <lightning-modal-body class="slds-p-around_medium">
         <lightning-input 
-          type="text"
-          label="Marca"
-          name="marca"
-          onchange={handleChange}
+        type="text"
+        label="Marca"
+        name="marca"
+        onchange={handleChange}
         ></lightning-input>
 
         <lightning-input 
-          type="text"
-          label="Modelo"
-          name="modelo"
-          onchange={handleChange}
+        type="text"
+        label="Modelo"
+        name="modelo"
+        onchange={handleChange}
         ></lightning-input>
 
         <lightning-input 
-          type="text"
-          label="Versão"
-          name="versao"
-          onchange={handleChange}
+        type="text"
+        label="Versão"
+        name="versao"
+        onchange={handleChange}
         ></lightning-input>
         
         <lightning-input 
-          type="date"
-          label="Ano"
-          name="ano"
-          onchange={handleChange}
+        type="date"
+        label="Ano"
+        name="ano"
+        onchange={handleChange}
         ></lightning-input>
         
         <lightning-input 
-          type="text"
-          label="Descrição"
-          name="descricao"
-          onchange={handleChange}
+        type="text"
+        label="Descrição"
+        name="descricao"
+        onchange={handleChange}
         ></lightning-input>
         
         <lightning-input 
-          type="number"
-          label="Motorização"
-          name="motor"
-          onchange={handleChange}
+        type="number"
+        label="Motorização"
+        name="motor"
+        onchange={handleChange}
         ></lightning-input>
         
         <lightning-input 
-          type="checkbox"
-          label="Hibrido/Elétrico"
-          name="hibrido_eletrico"
-          onchange={handleChange}
+        type="checkbox"
+        label="Hibrido/Elétrico"
+        name="hibrido_eletrico"
+        onchange={handleChange}
         ></lightning-input>
-     </lightning-modal-body>
-     <!-- Botões de ação -->
-     <lightning-modal-footer>
-        <lightning-button variant="success" label="Cadastrar" onclick={handleCadastroVeiculo} ></lightning-button>
-        <lightning-button variant="destructive" label="Limpar Campos" onclick={handleLimparCampos} ></lightning-button>
-     </lightning-modal-footer>
+    </lightning-modal-body>
+    <!-- Botões de ação -->
+    <lightning-modal-footer>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col"><lightning-button variant="success" label="Cadastrar" onclick={handleCadastroVeiculo} ></lightning-button></div>
+            <div class="slds-col"><lightning-button variant="destructive" label="Limpar Campos" onclick={handleLimparCampos} ></lightning-button></div>
+        </div>
+    </lightning-modal-footer>
 </template>

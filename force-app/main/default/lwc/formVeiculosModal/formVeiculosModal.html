@@ -26,7 +26,7 @@
         ></lightning-input>
         
         <lightning-input 
-        type="date"
+        type="text"
         label="Ano"
         name="ano"
         onchange={handleChange}
@@ -56,7 +56,7 @@
     <!-- Botões de ação -->
     <lightning-modal-footer>
         <div class="slds-grid slds-gutters">
-            <div class="slds-col"><lightning-button variant="success" label="Cadastrar" onclick={handleCadastroVeiculo} ></lightning-button></div>
+            <div class="slds-col"><lightning-button variant="success" label="Cadastrar" onclick={handleCadastrarVeiculo} ></lightning-button></div>
             <div class="slds-col"><lightning-button variant="destructive" label="Limpar Campos" onclick={handleLimparCampos} ></lightning-button></div>
         </div>
     </lightning-modal-footer>

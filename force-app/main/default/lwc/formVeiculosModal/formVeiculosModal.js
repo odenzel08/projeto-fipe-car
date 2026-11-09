@@ -20,8 +20,12 @@ export default class FormVeiculosModal extends LightningModal {
         console.log('🟨 [33] [formVeiculosModal.js] this.dados: ' + this.dados);
     }
 
-    handleLimparCampos(event){
-        //Lógica de limpar todos os campos.
+    handleLimparCampos(){
+        //Lógica de limpar todos os campos
+        const fields = this.querySelectorAll('lightning-input-field');
+        if (fields){
+            fields.forEach(field => field.reset());
+        }
     }
 
 }

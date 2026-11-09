@@ -1,62 +1,23 @@
 <template>
 <!-- Modal para cadastro de veículos
         Titulo  -->
-    <lightning-modal-header label="Cadastrar novo veículo"></lightning-modal-header>
+    <lightning-modal-header icon-name="" label="Cadastrar novo veículo" ></lightning-modal-header>
     <!-- Conteúdo -->
     <lightning-modal-body class="slds-p-around_medium">
-        <lightning-input 
-        type="text"
-        label="Marca"
-        name="marca"
-        onchange={handleChange}
-        ></lightning-input>
-
-        <lightning-input 
-        type="text"
-        label="Modelo"
-        name="modelo"
-        onchange={handleChange}
-        ></lightning-input>
-
-        <lightning-input 
-        type="text"
-        label="Versão"
-        name="versao"
-        onchange={handleChange}
-        ></lightning-input>
-        
-        <lightning-input 
-        type="text"
-        label="Ano"
-        name="ano"
-        onchange={handleChange}
-        ></lightning-input>
-        
-        <lightning-input 
-        type="text"
-        label="Descrição"
-        name="descricao"
-        onchange={handleChange}
-        ></lightning-input>
-        
-        <lightning-input 
-        type="number"
-        label="Motorização"
-        name="motor"
-        onchange={handleChange}
-        ></lightning-input>
-        
-        <lightning-input 
-        type="checkbox"
-        label="Hibrido/Elétrico"
-        name="hibrido_eletrico"
-        onchange={handleChange}
-        ></lightning-input>
+        <lightning-record-edit-form object-api-name="Veiculo__c" onsubmit={handleCadastrarVeiculo}>
+            <lightning-input-field field-name="Marca__c" type="text" required data-id="marca"></lightning-input-field>
+            <lightning-input-field field-name="Modelo__c" type="text" required data-id="modelo"></lightning-input-field>
+            <lightning-input-field field-name="Versao__c" type="text" required data-id="versao"></lightning-input-field>
+            <lightning-input-field field-name="Ano__c" type="text" required data-id="ano"></lightning-input-field>
+            <lightning-input-field field-name="Descricao__c" type="text" data-id="desc"></lightning-input-field>
+            <lightning-input-field field-name="Motor__c" type="number" data-id="motor"></lightning-input-field>
+            <lightning-input-field field-name="Hibrido_Eletrico__c" type="checkbox" value="false" data-id="hev"></lightning-input-field>
+        </lightning-record-edit-form>
     </lightning-modal-body>
     <!-- Botões de ação -->
     <lightning-modal-footer>
         <div class="slds-grid slds-gutters">
-            <div class="slds-col"><lightning-button variant="success" label="Cadastrar" onclick={handleCadastrarVeiculo} ></lightning-button></div>
+            <div class="slds-col"><lightning-button variant="success" type= "submit" label="Cadastrar"></lightning-button></div>
             <div class="slds-col"><lightning-button variant="destructive" label="Limpar Campos" onclick={handleLimparCampos} ></lightning-button></div>
         </div>
     </lightning-modal-footer>

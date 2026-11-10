@@ -8,6 +8,13 @@ export default class VeiculosPage extends LightningElement {
 
     async handleClique(){
         const dadosVeiculo = await FormModal.open();
+        console.log("🚀 ~ VeiculosPage ~ handleClique ~ dadosVeiculo:", dadosVeiculo)
+        console.log('dadosVeiculo:' + JSON.stringify(dadosVeiculo));
+        console.log(typeof dadosVeiculo.hev);
+
+        if(!dadosVeiculo){
+            return;
+        } 
 
         //enviar os dados para a classe apex
         salvarVeiculoController({veiculo: dadosVeiculo})
@@ -15,7 +22,7 @@ export default class VeiculosPage extends LightningElement {
                 if(resultado.sucesso === true){
                     this.dispatchEvent(new ShowToastEvent({
                         title: 'Cadastro realizado!',
-                        message: dadosVeiculo.Marca__c + dadosVeiculo.Modelo__c + ' cadastrado. ID: ' + resultado.idVeiculo,
+                        message: `Veículo cadastrado. ID: ${resultado.idVeiculo}`,
                         variant: 'success'
                     }));
                 } else if(resultado.sucesso === false){
@@ -27,9 +34,10 @@ export default class VeiculosPage extends LightningElement {
                 }
             })
             .catch(error => {
+                console.log("🚀 ~ VeiculosPage ~ handleClique ~ error:", error)
                 this.dispatchEvent(new ShowToastEvent({
                     title: 'Erro inesperado',
-                    message: error.body.message,
+                    message: error.body?.message || error.message,                   
                     variant: 'error'
                 }));
             })

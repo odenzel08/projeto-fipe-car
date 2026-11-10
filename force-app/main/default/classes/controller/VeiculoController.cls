@@ -5,5 +5,9 @@ public with sharing class VeiculoController {
 
         return VeiculoService.salvarVeiculo(veiculo);    
     }
+    @AuraEnabled
+    public static List<VeiculoService.ListResponse> buscarVeiculosController(){
+        return VeiculoService.buscarTodosVeiculos();
+    }
     
 }

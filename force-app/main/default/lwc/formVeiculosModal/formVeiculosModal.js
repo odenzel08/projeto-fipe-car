@@ -1,11 +1,6 @@
 import LightningModal from 'lightning/modal';
 
 export default class FormVeiculosModal extends LightningModal {
-
-    // handleRef(){
-    //     console.log('Botão Cadastrar acionado');     
-    //     this.refs.form.submit();
-    // }
     
     //Retorna a promise com o objeto contendo os dados do novo veículo
     handleCadastrarVeiculo(event){

@@ -1,10 +1,9 @@
 public with sharing class VeiculoController {
     
     @AuraEnabled
-    public static VeiculoService.VeiculoResponse salvarVeiculoController(String marca, String modelo, String versao, 
-        String ano, String descricao, Double motor, Boolean ev){
+    public static VeiculoService.VeiculoResponse salvarVeiculoController(Veiculo__c veiculo){
 
-        return VeiculoService.salvarVeiculo(marca, modelo, versao, ano, descricao, motor, ev);    
+        return VeiculoService.salvarVeiculo(veiculo);    
     }
     
 }

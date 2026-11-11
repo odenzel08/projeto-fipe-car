@@ -1,10 +1,14 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire } from 'lwc';
 import FormModal from 'c/formVeiculosModal';
 import salvarVeiculoController from '@salesforce/apex/VeiculoController.salvarVeiculoController';
+import buscarVeiculos from '@salesforce/apex/VeiculoController.buscarVeiculosController';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 
 export default class VeiculosPage extends LightningElement {
+
+    //Variavel que vai receber a lista de veiculos 
+    veiculos;
 
     async handleClique(){
         const dadosVeiculo = await FormModal.open();
@@ -42,5 +46,20 @@ export default class VeiculosPage extends LightningElement {
                 }));
             })
     }
+
+    // Os dados já podem ficar disponíveis assim que o componente for inicializado.
+    @wire(buscarVeiculos)
+    wiredVeiculos({data, error}){
+        if(data){
+            this.veiculos = data;
+            if(this.veiculos.Valor__c == null){
+                this.veiculos.Valor__c = 0;
+            }
+            this.error = undefined;
+        } else if (error){
+            this.veiculos = undefined;
+        }
+    }
+    
 
 }

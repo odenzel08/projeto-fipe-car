@@ -1,5 +1,6 @@
 import { LightningElement, wire } from 'lwc';
 import FormModal from 'c/formVeiculosModal';
+import imagem from '@salesforce/resourceUrl/imagem_carro';
 import salvarVeiculoController from '@salesforce/apex/VeiculoController.salvarVeiculoController';
 import buscarVeiculos from '@salesforce/apex/VeiculoController.buscarVeiculosController';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
@@ -7,8 +8,12 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class VeiculosPage extends LightningElement {
 
+    carroImagem = imagem;
+
     //Variavel que vai receber a lista de veiculos 
     veiculos;
+    // Variavel que avisa ao HTML que os dados do veiculo ainda não foram retornados
+    error;
 
     async handleClique(){
         const dadosVeiculo = await FormModal.open();
@@ -52,12 +57,10 @@ export default class VeiculosPage extends LightningElement {
     wiredVeiculos({data, error}){
         if(data){
             this.veiculos = data;
-            if(this.veiculos.Valor__c == null){
-                this.veiculos.Valor__c = 0;
-            }
             this.error = undefined;
         } else if (error){
             this.veiculos = undefined;
+            this.error = error;
         }
     }
     

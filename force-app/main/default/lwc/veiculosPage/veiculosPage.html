@@ -5,7 +5,7 @@
     <div class="slds-grid slds-wrap slds-gutters">
         <template lwc:if={veiculos}>
             <template for:each={veiculos} for:item="veic">
-                <div class="slds-col slds-size_1-of-3 slds-m-top_medium" key={veic.Id}>
+                <div class="slds-col slds-size_1-of-3 slds-m-top_medium" key={veic.Id} data-key={veic.Id} onclick={clickTest}>
                     <lightning-card title={veic.Modelo__c}>
                         <!-- Imagem -->
                         <img src={carroImagem} alt="carro">

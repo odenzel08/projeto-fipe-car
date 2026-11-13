@@ -32,33 +32,20 @@ public with sharing class VeiculoService {
         }
     }
 
-    public class ListResponse{
-        @AuraEnabled
-        public String marca;
-        @AuraEnabled
-        public String modelo;
-        @AuraEnabled
-        public String ano;
-        @AuraEnabled
-        public Integer valor;
 
-        public ListResponse(String marca, String modelo, String ano, Integer valor) {
-            this.marca = marca;
-            this.modelo = modelo;
-            this.ano = ano;
-            this.valor = valor;
+    public static List<Veiculo__c> buscarTodosVeiculos(){
+
+        try {
+            List<Veiculo__c> veiculos = [
+                SELECT Id, Marca__c, Modelo__c, Ano__c, Valor__c
+                FROM Veiculo__c
+                WHERE CreatedDate = LAST_N_DAYS:7
+                ORDER BY CreatedDate Desc
+            ];
+            return veiculos;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
-
-    }
-
-    public static List<ListResponse> buscarTodosVeiculos(){
-        List<ListResponse> wrapperList = new List<ListResponse>();
-
-        //Itera diretamente sobre a consulta e armazena na wrapperList
-        for (ListResponse lr : [SELECT Id, Marca__c, Modelo__c, Ano__c, Valor__c FROM Veiculo__c LIMIT 10]) {
-            wrapperList.add(new ListResponse(lr.Marca__c, lr.Modelo__c, lr.Ano__c, 100000));
-        } //LIMIT é só para teste (temporário)
-        return wrapperList;
 
     }
 }

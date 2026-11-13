@@ -2,4 +2,33 @@
     <div class="slds-text-align_right slds-m-top_medium">
         <lightning-button variant="brand" label="Cadastrar Novo Veículo" onclick={handleClique}></lightning-button>
     </div>
+    <div class="slds-grid slds-wrap slds-gutters">
+        <template lwc:if={veiculos}>
+            <template for:each={veiculos} for:item="veic">
+                <div class="slds-col slds-size_1-of-3 slds-m-top_medium" key={veic.Id}>
+                    <lightning-card title={veic.Modelo__c}>
+                        <!-- Imagem -->
+                        <img src={carroImagem} alt="carro">
+                        <!-- Marca e Modelo -->
+                        <div class="slds-p-around_medium">
+                            <h3>{veic.Marca__c} {veic.Modelo__c}</h3>
+
+                            <!-- Especificações -->
+                            <!--icone de calendario --><p>{veic.Ano__c}</p>
+                            <p><strong>R${veic.Valor__c}</strong></p>
+                        </div>
+                    </lightning-card>
+                    </div>
+            </template>
+    </template>
+    </div>
+    <template lwc:if={error}>
+        <div class="slds-align_absolute_center">
+            <lightning-spinner 
+            alternative-text="Buscando informações de veículos" 
+            size="medium"
+            variant="base"
+            ></lightning-spinner>
+        </div>
+    </template>
 </template>

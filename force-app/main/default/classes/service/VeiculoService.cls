@@ -48,4 +48,18 @@ public with sharing class VeiculoService {
         }
 
     }
+
+    public static Veiculo__c exibirDetalhes(String id){
+        try {
+            Veiculo__c veiculo = new Veiculo__c();
+            veiculo = [
+                SELECT Id, Marca__c, Modelo__c, Versao__c, Ano__c, Descricao__c, Hibrido_Eletrico__c, Motor__c, Variacao__c
+                FROM Veiculo__c
+                WHERE Id = :id
+            ];
+            return veiculo;
+        } catch (DmlException e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }

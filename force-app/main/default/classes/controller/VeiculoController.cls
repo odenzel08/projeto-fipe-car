@@ -9,5 +9,8 @@ public with sharing class VeiculoController {
     public static List<Veiculo__c> buscarVeiculosController(){
         return VeiculoService.buscarTodosVeiculos();
     }
-    
+    @AuraEnabled
+    public static Veiculo__c exibirDetalhesController(String id){
+        return VeiculoService.exibirDetalhes(id);
+    }
 }

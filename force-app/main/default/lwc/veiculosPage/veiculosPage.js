@@ -3,6 +3,7 @@ import FormModal from 'c/formVeiculosModal';
 import imagem from '@salesforce/resourceUrl/imagem_carro';
 import salvarVeiculoController from '@salesforce/apex/VeiculoController.salvarVeiculoController';
 import buscarVeiculos from '@salesforce/apex/VeiculoController.buscarVeiculosController';
+import exibirDetalhes from '@salesforce/apex/VeiculoController.exibirDetalhesController';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 
@@ -62,6 +63,23 @@ export default class VeiculosPage extends LightningElement {
             this.veiculos = undefined;
             this.error = error;
         }
+    }
+
+    detalheVeiculo(event){
+        const recordId = event.currentTarget.dataset.key;
+        
+        exibirDetalhes({id: recordId})
+            .then(detalhes => {
+                
+            })
+            .catch(error => {
+                this.dispatchEvent(new ShowToastEvent({
+                    title: 'Erro ao exibir detalhes.',
+                    message: 'Não foi possível exibir os detalhes desse veículo.',
+                    variant: 'error'
+                }));
+                console.log(error.body?.message || error.message);
+            });
     }
     
 

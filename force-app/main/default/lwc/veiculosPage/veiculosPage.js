@@ -1,5 +1,6 @@
 import { LightningElement, wire } from 'lwc';
 import FormModal from 'c/formVeiculosModal';
+import DetailModal from 'c/veiculosDetailModal';
 import imagem from '@salesforce/resourceUrl/imagem_carro';
 import salvarVeiculoController from '@salesforce/apex/VeiculoController.salvarVeiculoController';
 import buscarVeiculos from '@salesforce/apex/VeiculoController.buscarVeiculosController';
@@ -70,7 +71,12 @@ export default class VeiculosPage extends LightningElement {
         
         exibirDetalhes({id: recordId})
             .then(detalhes => {
-                
+                return DetailModal.open({
+                    infoList: detalhes
+                });
+            })
+            .then((resultado) => {
+                console.log('Retorno do modal:', resultado);
             })
             .catch(error => {
                 this.dispatchEvent(new ShowToastEvent({

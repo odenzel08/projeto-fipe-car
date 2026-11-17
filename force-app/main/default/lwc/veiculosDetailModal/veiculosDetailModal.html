@@ -1,3 +1,27 @@
 <template>
-    
+    <template if:true={infoList}>
+        <lightning-modal-header label="Detalhes"></lightning-modal-header>
+            <lightning-modal-body class="slds-p-around_medium">
+                <lightning-record-edit-form
+                    record-id={infoList.Id}
+                    object-api-name="Veiculo__c"
+                    >
+                    <lightning-input-field field-name="Marca__c"></lightning-input-field>
+                    <lightning-input-field field-name="Modelo__c"></lightning-input-field>
+                    <lightning-input-field field-name="Versao__c"></lightning-input-field>
+                    <lightning-input-field field-name="Ano__c"></lightning-input-field>
+                    <lightning-output-field field-name="Valor__c"></lightning-output-field>
+                    <lightning-input-field field-name="Descricao__c"></lightning-input-field>
+                    <lightning-input-field field-name="Hibrido_Eletrico__c"></lightning-input-field>
+                    <lightning-input-field field-name="Motor__c"></lightning-input-field>
+                    <lightning-output-field field-name="Variacao__c"></lightning-output-field>
+                </lightning-record-edit-form>
+            </lightning-modal-body>
+            <lightning-modal-footer>
+                <div class="slds-grid">
+                    <lightning-button variant="brand" label="Atualizar registro" onclick={handleClick}></lightning-button>
+                    <lightning-button class="slds-m-left_medium" variant="destructive" label="Deletar registro" onclick={handleClick}></lightning-button>
+                </div>
+            </lightning-modal-footer>          
+    </template>
 </template>

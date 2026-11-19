@@ -62,4 +62,15 @@ public with sharing class VeiculoService {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    public static String atualizarVeiculo(String id, Veiculo__c veicAtualizado){
+        //Atualiza somente os campos recebidos.
+        veicAtualizado.Id = id;
+        try {
+            update veicAtualizado;
+            return 'Veículo atualizado com sucesso.';
+        } catch (DmlException e) {
+            return 'Erro: ' + e.getMessage();
+        }
+    }
 }

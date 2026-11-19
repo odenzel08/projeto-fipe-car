@@ -6,15 +6,15 @@
                     record-id={infoList.Id}
                     object-api-name="Veiculo__c"
                     >
-                    <lightning-input-field field-name="Marca__c"></lightning-input-field>
-                    <lightning-input-field field-name="Modelo__c"></lightning-input-field>
-                    <lightning-input-field field-name="Versao__c"></lightning-input-field>
-                    <lightning-input-field field-name="Ano__c"></lightning-input-field>
+                    <lightning-input-field field-name="Marca__c" onchange={handleCampoAlterado}></lightning-input-field>
+                    <lightning-input-field field-name="Modelo__c" onchange={handleCampoAlterado}></lightning-input-field>
+                    <lightning-input-field field-name="Versao__c" onchange={handleCampoAlterado}></lightning-input-field>
+                    <lightning-input-field field-name="Ano__c" onchange={handleCampoAlterado}></lightning-input-field>
                     <lightning-output-field field-name="Valor__c"></lightning-output-field>
-                    <lightning-input-field field-name="Descricao__c"></lightning-input-field>
-                    <lightning-input-field field-name="Hibrido_Eletrico__c"></lightning-input-field>
-                    <lightning-input-field field-name="Motor__c"></lightning-input-field>
-                    <lightning-output-field field-name="Variacao__c"></lightning-output-field>
+                    <lightning-input-field field-name="Descricao__c" onchange={handleCampoAlterado}></lightning-input-field>
+                    <lightning-input-field field-name="Hibrido_Eletrico__c" onchange={handleCampoAlterado}></lightning-input-field>
+                    <lightning-input-field field-name="Motor__c" onchange={handleCampoAlterado}></lightning-input-field>
+                    <lightning-output-field field-name="Variacao__c" onchange={handleCampoAlterado}></lightning-output-field>
                 </lightning-record-edit-form>
             </lightning-modal-body>
             <lightning-modal-footer>

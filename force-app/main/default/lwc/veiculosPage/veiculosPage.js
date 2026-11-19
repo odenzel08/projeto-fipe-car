@@ -5,6 +5,7 @@ import imagem from '@salesforce/resourceUrl/imagem_carro';
 import salvarVeiculoController from '@salesforce/apex/VeiculoController.salvarVeiculoController';
 import buscarVeiculos from '@salesforce/apex/VeiculoController.buscarVeiculosController';
 import exibirDetalhes from '@salesforce/apex/VeiculoController.exibirDetalhesController';
+import atualizarVeiculo from '@salesforce/apex/VeiculoController.atualizarVeiculoController';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 
@@ -16,6 +17,11 @@ export default class VeiculosPage extends LightningElement {
     veiculos;
     // Variavel que avisa ao HTML que os dados do veiculo ainda não foram retornados
     error;
+    // Variavel que armazena os campos e valores de veiculos que vão ser atualizados.
+    veicAtualizado = {};
+
+    //Armazena o id do veiculo selecionado no front
+    veiculoSelecionadoId;
 
     async handleClique(){
         const dadosVeiculo = await FormModal.open();
@@ -67,9 +73,9 @@ export default class VeiculosPage extends LightningElement {
     }
 
     detalheVeiculo(event){
-        const recordId = event.currentTarget.dataset.key;
+        this.veiculoSelecionadoId = event.currentTarget.dataset.key;
         
-        exibirDetalhes({id: recordId})
+        exibirDetalhes({id: veiculoSelecionadoId})
             .then(detalhes => {
                 return DetailModal.open({
                     infoList: detalhes
@@ -87,6 +93,13 @@ export default class VeiculosPage extends LightningElement {
                 console.log(error.body?.message || error.message);
             });
     }
-    
+    handleAtualizarVeiculo(event){
+        const {campo, valor} = event.detail;
+        this.veicAtualizado = {...this.veicAtualizado,
+            [campo]: valor
+        };
+        
+            
+    }
 
 }

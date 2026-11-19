@@ -13,4 +13,8 @@ public with sharing class VeiculoController {
     public static Veiculo__c exibirDetalhesController(String id){
         return VeiculoService.exibirDetalhes(id);
     }
+    @AuraEnabled
+    public static String atualizarVeiculoController(String id, Veiculo__c veicAtualizado){
+        return VeiculoService.atualizarVeiculo(id, veicAtualizado);
+    }
 }
